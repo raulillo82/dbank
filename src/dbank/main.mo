@@ -13,8 +13,13 @@ actor DBank {
   };
 
     public func withdraw(amount: Nat) {
-    currentValue -= amount;
-    Debug.print(debug_show(currentValue));
+      let tempValue: Int = currentValue - amount;
+      if (tempValue >= 0) {
+        currentValue -= amount;
+        Debug.print(debug_show(currentValue));
+      } else {
+        Debug.print("Amount too large, resulting balance less than zero, not withdrawing!");
+      }
   };
 
   //topUp();
